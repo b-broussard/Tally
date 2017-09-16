@@ -3,9 +3,9 @@ package com.example.android.courtcounter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.support.v4.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 
 /**
  * Created by BMB on 5/15/2017.
@@ -16,8 +16,9 @@ public class NewGameDialogFragment extends DialogFragment {
     AlertDialogListener mListener;
 
     public interface AlertDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog);
-        public void onDialogNegativeClick(DialogFragment dialog);
+        void onDialogPositiveClick(DialogFragment dialog);
+        void onDialogNegativeClick(DialogFragment dialog);
+        //public void onDialogNeutralClick(DialogFragment dialog);
     }
 
     @Override
