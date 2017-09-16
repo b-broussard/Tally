@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Court Counter</string>
+    <string name="app_name">Tally</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="clear_scores">Clear scores?</string>
@@ -10,8 +10,4 @@
     <string name="new_name">New team name</string>
     <string name="change">Change</string>
     <string name="cancel">Cancel</string>
-    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

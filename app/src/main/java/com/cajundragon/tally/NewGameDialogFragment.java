@@ -1,4 +1,4 @@
-package com.example.android.courtcounter;
+package com.cajundragon.tally;
 
 import android.app.Activity;
 import android.app.AlertDialog;
