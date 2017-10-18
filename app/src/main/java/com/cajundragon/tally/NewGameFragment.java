@@ -11,7 +11,7 @@ import android.support.v4.app.DialogFragment;
  * Created by BMB on 5/15/2017.
  */
 
-public class NewGameDialogFragment extends DialogFragment {
+public class NewGameFragment extends DialogFragment {
 
     AlertDialogListener mListener;
 
@@ -41,14 +41,14 @@ public class NewGameDialogFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Clear both teams' scores
-                        mListener.onDialogPositiveClick(NewGameDialogFragment.this);
+                        mListener.onDialogPositiveClick(NewGameFragment.this);
                     }
                 })
                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Keep scores
-                        mListener.onDialogNegativeClick(NewGameDialogFragment.this);
+                        mListener.onDialogNegativeClick(NewGameFragment.this);
                     }
                 });
         return builder.create();

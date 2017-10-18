@@ -14,7 +14,7 @@ import android.widget.EditText;
  * Created by BMB on 6/3/2017.
  */
 
-public class TeamNameRenameDialogFragment extends DialogFragment {
+public class TeamRenameFragment extends DialogFragment {
 
     InputDialogListener mListener;
 
@@ -48,7 +48,7 @@ public class TeamNameRenameDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         // Rename team
 //                        String newTeam = mInput.getText().toString();
-                        mListener.onInputDialogPositiveClick(TeamNameRenameDialogFragment.this);
+                        mListener.onInputDialogPositiveClick(TeamRenameFragment.this);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
