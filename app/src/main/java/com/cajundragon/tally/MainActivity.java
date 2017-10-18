@@ -3,11 +3,13 @@ package com.cajundragon.tally;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-        implements NewGameDialogFragment.AlertDialogListener,
-        TeamNameRenameDialogFragment.InputDialogListener {
+        implements NewGameFragment.AlertDialogListener,
+        TeamRenameFragment.InputDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,44 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 //        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
 //        setSupportActionBar(myToolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.app_bar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.share_menu:
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setType("text/plain").setData(Uri.parse("mailto:"));
+//        intent.setData(Uri.parse("mailto:"));
+                intent.setData(Uri.parse("sms:"));
+                intent.putExtra("sms body", "" + teamNameA + "'s score is " + scoreTeamA + ", while "
+                        + teamNameB + " has " + scoreTeamB + " points.");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Current basketball scores for Teams A and B");
+                intent.putExtra(Intent.EXTRA_TEXT, "Team A's score is " + scoreTeamA + ", while Team B has "
+                + scoreTeamB + " points.");
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(Intent.createChooser(intent, "Share via"));
+                }
+
+                return true;
+            case R.id.theme_menu:
+                ThemeFragment themeFragment = new ThemeFragment();
+                themeFragment.show(getSupportFragmentManager(), "themeChanging");
+                return true;
+
+            case R.id.action_settings:
+                //TODO: Implement a settings menu and move into navigation activity; may include theme picker
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public Button getNewGameButton() {
@@ -115,13 +155,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void changeTeamNameA(View view) {
-        TeamNameRenameDialogFragment renameTeamA = new TeamNameRenameDialogFragment();
+        TeamRenameFragment renameTeamA = new TeamRenameFragment();
         currentView = view.getId();
         renameTeamA.show(getSupportFragmentManager(), "renameA");
     }
 
     public void changeTeamNameB(View view) {
-        TeamNameRenameDialogFragment renameTeamB = new TeamNameRenameDialogFragment();
+        TeamRenameFragment renameTeamB = new TeamRenameFragment();
         currentView = view.getId();
         renameTeamB.show(getSupportFragmentManager(), "renameB");
     }
@@ -152,21 +192,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public void shareScores(View view) {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setType("text/plain");
-//        intent.setData(Uri.parse("mailto:"));
-        intent.setData(Uri.parse("sms:"));
-        intent.putExtra("sms body", "" + teamNameA + "'s score is " + scoreTeamA + ", while "
-                + teamNameB + " has " + scoreTeamB + " points.");
-//        intent.putExtra(Intent.EXTRA_SUBJECT, "Current basketball scores for Teams A and B");
-//        intent.putExtra(Intent.EXTRA_TEXT, "Team A's score is " + scoreTeamA + ", while Team B has "
-//                + scoreTeamB + " points.");
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(Intent.createChooser(intent, "Share via"));
-        }
-    }
-
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
         scoreTeamA = 0;
@@ -188,7 +213,7 @@ public class MainActivity extends AppCompatActivity
 
     public void clearScores(View view) {
         if (scoreTeamA != 0 || scoreTeamB != 0) {
-            DialogFragment clearScores = new NewGameDialogFragment();
+            DialogFragment clearScores = new NewGameFragment();
             clearScores.show(getSupportFragmentManager(), "nuke");
         } else {
             Context context = getApplicationContext();
