@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Tally</string>
+    <string name="basketball_counter">Basketball Scores</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="clear_scores">Clear scores?</string>
     <string name="confirm">Are you sure you want to clear all scores?</string>
     <string name="ok">OK</string>
     <string name="share">Share</string>
-    <string name="action_settings">Menu</string>
+
+    <!---TODO: update settings name after implementing preferences activity-->
+    <string name="action_settings">Settings (empty)</string>
     <string name="new_name">New team name</string>
     <string name="change">Change</string>
     <string name="cancel">Cancel</string>
@@ -14,4 +17,11 @@
     <string name="light_theme">Light theme</string>
     <string name="dark_theme">Dark theme</string>
     <string name="black_theme">Black theme</string>
+    <string name="team_b">Team B</string>
+    <string name="team_a">Team A</string>
+    <string name="three_points">+3 Points</string>
+    <string name="two_points">+2 Points</string>
+    <string name="free_throw">Free Throw</string>
+    <string name="clear">Clear</string>
+    <string name="new_game">New Game</string>
 </resources>

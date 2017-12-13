@@ -5,13 +5,13 @@
     <item android:id="@+id/share_menu"
           android:title="@string/share"
           app:showAsAction="ifRoom"
-          android:icon="@mipmap/ic_share_black_24dp"
-          android:actionProviderClass="android.widget.ShareActionProvider"/>
+          android:icon="@drawable/ic_share_black_24dp"
+          app:actionProviderClass="android.support.v4.widget.ShareActionProvider"/>
 
     <item android:id="@+id/theme_menu"
         android:title="@string/theme_menu"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_brightness_4_black_48dp"/>
+        android:icon="@drawable/ic_brightness_4_black_24px"/>
 
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
