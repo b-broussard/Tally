@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_main);
 
-        Toolbar appBar = (Toolbar) findViewById(R.id.app_bar);
+        Toolbar appBar = findViewById(R.id.app_bar);
         setSupportActionBar(appBar);
 
         final ActionBar toolBar = getSupportActionBar();

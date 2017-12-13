@@ -1,14 +1,16 @@
 package com.cajundragon.tally;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+
+//import android.app.DialogFragment;
 
 /**
  * Created by BMB on 6/3/2017.
@@ -20,7 +22,6 @@ public class TeamRenameFragment extends DialogFragment {
 
     public interface InputDialogListener {
         void onInputDialogPositiveClick(DialogFragment dialog);
-        void onInputDialogNegativeClick();
     }
 
     @Override
@@ -47,7 +48,7 @@ public class TeamRenameFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Rename team
-//                        String newTeam = mInput.getText().toString();
+                        // String newTeam = mInput.getText().toString();
                         mListener.onInputDialogPositiveClick(TeamRenameFragment.this);
                     }
                 })
@@ -55,10 +56,10 @@ public class TeamRenameFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Keep current team name
-                        mListener.onInputDialogNegativeClick();
+                        dialog.dismiss();
                     }
                 });
-        
+
         return builder.create();
     }
 
