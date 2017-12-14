@@ -242,6 +242,7 @@ public class MainActivity extends AppCompatActivity
         editor.putString("TeamBName", teamNameB);
         editor.putInt("TeamAScore", teamScoreA);
         editor.putInt("TeamBScore", teamScoreB);
+        editor.putInt("focusedEditTextDialog", currentView);
         editor.putInt(PREF_THEME_RESID_ID, currentTheme);
         editor.apply();
     }
@@ -258,6 +259,7 @@ public class MainActivity extends AppCompatActivity
         teamScoreA = preferences.getInt("TeamAScore", teamScoreA);
         teamScoreB = preferences.getInt("TeamBScore", teamScoreB);
         currentTheme = preferences.getInt(PREF_THEME_RESID_ID, currentTheme);
+        currentView = preferences.getInt("focusedEditTextDialog", currentView);
         displayOnRestore();
         enableNewGameButton();
     }
