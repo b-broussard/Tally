@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity
         ThemeFragment.ThemeDialogListener {
 
     private int currentView = 0;
-    private int currentTheme;
+    private int currentTheme = 0;
 
     public final String SHARED_PREFERENCES_NAME = "tally_preferences";
     public final String PREF_THEME_RESID_ID = "theme_resid";
@@ -35,9 +35,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            applySharedTheme();
-        }
+
+        applySharedTheme();
 
         setContentView(R.layout.activity_main);
 
